@@ -1,15 +1,27 @@
-
 package cat.iesjoaquimmir.alumnesapp.views.console;
 import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.alumne.Alumne;
+import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.domicili.Domicili;
 import java.util.Scanner;
+import  java.util.ArrayList;
+
 public class Application {
     public static void main(String[] args) {
         int opcio;
+        int opcio_tel;
+        int i;
         String nom;
         String dni;
+        String cognom1;
+        String cognom2;
+        ArrayList<String> telefon = new ArrayList<String>();
         int edat;
+        String carrer;
+        String numero;
+        String pis;
+        String cp;
+        String provi;
         Scanner entrada=new Scanner(System.in);
-        System.out.printf("1.Nom,DNI,Edat%n2.DNI%n3.DNI,Edat%n4.Edat,nom%n5.Nom,DNI%n6.Sortir%n");
+        System.out.printf("1.Informacio completa%n2.DNI%n3.DNI,Edat%n4.Edat,nom%n5.Nom,DNI%n6.Sortir%n");
         System.out.printf("Quina opcio vols?");
         opcio = entrada.nextInt();  
          switch (opcio) {
@@ -17,12 +29,38 @@ public class Application {
                
                 System.out.printf("Digues el teu nom:");
                 nom = entrada.next();
+                System.out.printf("Digues el cognom 1:");
+                cognom1=entrada.next();
+                System.out.printf("Digues el cognom 2:");
+                cognom2=entrada.next();
+                System.out.printf("-----Telefon------%n");
+                    System.out.printf("Quants telf. vols?");
+                    opcio_tel= entrada.nextInt();
+                    for(i=0;i<opcio_tel;i++){
+                        System.out.printf("Telefon %d:",i+1); 
+                        telefon.add(entrada.next());
+                    }
                 System.out.printf("Digues el teu DNI:");
                 dni= entrada.next();
                 System.out.printf("Digues la teva edat:");
                 edat= entrada.nextInt();
-                Alumne a1 = new Alumne (nom,dni,edat);
-                System.out.printf("%s",a1.getSalutacio());
+                System.out.printf("Digues el carrer:");
+                carrer= entrada.next();
+                System.out.printf("Digues el numero:");
+                numero= entrada.next();
+                System.out.printf("Digues el pis:");
+                pis= entrada.next();
+                System.out.printf("Digues el CP:");
+                cp= entrada.next();
+                System.out.printf("Digues la provincia:");
+                provi=entrada.next();
+                Domicili d1 = new Domicili (carrer,numero,pis,cp,provi);
+                Alumne a1 = new Alumne (nom,cognom1,cognom2,telefon,dni,edat,d1);
+                System.out.printf("%s %nAdreça: %s%n",a1.getSalutacio(),d1.getDomicili());
+                System.out.printf("-----Telefons------%n");
+                for(int x=0;x<telefon.size();x++) {
+                    System.out.printf("Telefon %d:%s%n",x+1,telefon.get(x));
+                }
                 break;
              case 2:
                
