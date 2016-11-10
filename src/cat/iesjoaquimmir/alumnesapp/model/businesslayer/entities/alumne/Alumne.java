@@ -2,6 +2,7 @@
 package cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.alumne;
 import  java.util.ArrayList;
 import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.domicili.Domicili;
+import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.moduls.Moduls;
 
 public final class Alumne {
     //<editor-fold defaultstate="collapsed" desc="Atributs">
@@ -12,6 +13,7 @@ public final class Alumne {
     private String dni;
     private int edat;
     private Domicili domicili;
+    private ArrayList<Moduls> modul;
     public static final String nom_def="Anonymous";
     public static final String cognom1_def="Anon_cognom1";
     public static final String cognom2_def="Anon_cognom2";
@@ -94,12 +96,18 @@ public final class Alumne {
     public void setTelefon(ArrayList<String> telefon) {
         this.telefon = telefon;
     }
+     public ArrayList<Moduls> getModul() {
+        return modul;
+    }
 
+    public void setModul(ArrayList<Moduls> modul) {
+        this.modul = modul;
+    }
 
 
 //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Constructors">
-    public Alumne (String nom,String cognom1,String cognom2,ArrayList<String> telefon, String dni, int edat,Domicili domicili) {
+    public Alumne (String nom,String cognom1,String cognom2,ArrayList<String> telefon, String dni, int edat,Domicili domicili, ArrayList<Moduls> modul) {
     this.setNom(nom);
     this.setCognom1(cognom1);
     this.setCognom2(cognom2);
@@ -107,18 +115,19 @@ public final class Alumne {
     this.setDni(dni);
     this.setEdat(edat);
     this.setDomicili(domicili);
+    this.setModul(modul);
     }
     public Alumne (String dni){
        this(dni,edat_def); 
     }
     public Alumne (String dni, int edat){
-       this(nom_def,cognom1_def,cognom2_def,null,dni,edat,null); 
+       this(nom_def,cognom1_def,cognom2_def,null,dni,edat,null,null); 
     }
     public Alumne (int edat, String nom){
-       this(nom,cognom1_def,cognom2_def,null,dni_def,edat,null); 
+       this(nom,cognom1_def,cognom2_def,null,dni_def,edat,null,null); 
     }
     public Alumne (String nom, String dni){
-       this(nom,cognom1_def,cognom2_def,null,dni,edat_def,null); 
+       this(nom,cognom1_def,cognom2_def,null,dni,edat_def,null,null); 
     }
 //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Operacions d'objecte">
@@ -127,6 +136,9 @@ public final class Alumne {
     }
 //</editor-fold>
 //</editor-fold>
+
+
+  
 
 
 

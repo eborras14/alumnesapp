@@ -1,6 +1,7 @@
 package cat.iesjoaquimmir.alumnesapp.views.console;
 import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.alumne.Alumne;
 import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.domicili.Domicili;
+import cat.iesjoaquimmir.alumnesapp.model.businesslayer.entities.moduls.Moduls;
 import java.util.Scanner;
 import  java.util.ArrayList;
 
@@ -10,10 +11,14 @@ public class Application {
         int opcio_tel;
         int i;
         String nom;
+        String nom_modul;
+        String descripcio;
+        String num_hores;
         String dni;
         String cognom1;
         String cognom2;
-        ArrayList<String> telefon = new ArrayList<String>();
+        ArrayList<String> telefon = new ArrayList<>();
+        ArrayList<Moduls> modul = new ArrayList<>();
         int edat;
         String carrer;
         String numero;
@@ -40,6 +45,19 @@ public class Application {
                         System.out.printf("Telefon %d:",i+1); 
                         telefon.add(entrada.next());
                     }
+                System.out.printf("Quants moduls vols?");
+                    opcio_tel= entrada.nextInt();
+                    for(i=0;i<opcio_tel;i++){
+                        System.out.printf("Nom modul:"); 
+                        nom_modul=entrada.next();
+                        System.out.printf("Descripcio:"); 
+                        descripcio=entrada.next();
+                        System.out.printf("Num. hores:"); 
+                        num_hores=entrada.next();
+                        modul.add(new Moduls(nom_modul,descripcio,num_hores));
+                        
+                    }
+                    
                 System.out.printf("Digues el teu DNI:");
                 dni= entrada.next();
                 System.out.printf("Digues la teva edat:");
@@ -55,11 +73,15 @@ public class Application {
                 System.out.printf("Digues la provincia:");
                 provi=entrada.next();
                 Domicili d1 = new Domicili (carrer,numero,pis,cp,provi);
-                Alumne a1 = new Alumne (nom,cognom1,cognom2,telefon,dni,edat,d1);
+                Alumne a1 = new Alumne (nom,cognom1,cognom2,telefon,dni,edat,d1,modul);
                 System.out.printf("%s %nAdreça: %s%n",a1.getSalutacio(),d1.getDomicili());
                 System.out.printf("-----Telefons------%n");
                 for(int x=0;x<telefon.size();x++) {
-                    System.out.printf("Telefon %d:%s%n",x+1,telefon.get(x));
+                    System.out.printf("Telefon %d: %s%n",x+1,telefon.get(x));
+                }
+                System.out.printf("-----Moduls------%n");
+                 for(int x=0;x<modul.size();x++) {
+                    System.out.printf("%s %n",a1.getModul().get(x).getNom_modul());
                 }
                 break;
              case 2:
