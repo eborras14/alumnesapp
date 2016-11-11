@@ -74,7 +74,7 @@ public class Application {
                 provi=entrada.next();
                 Domicili d1 = new Domicili (carrer,numero,pis,cp,provi);
                 Alumne a1 = new Alumne (nom,cognom1,cognom2,telefon,dni,edat,d1,modul);
-                System.out.printf("%s %nAdreça: %s%n",a1.getSalutacio(),d1.getDomicili());
+                System.out.printf("%s %nAdreça: %s%n",a1.getSalutacio(),a1.getDomicili().getDomicili());
                 System.out.printf("-----Telefons------%n");
                 for(int x=0;x<telefon.size();x++) {
                     System.out.printf("Telefon %d: %s%n",x+1,telefon.get(x));
